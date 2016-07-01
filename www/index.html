@@ -26,6 +26,7 @@
           var canvasColor = "#ffffff";
           function blink() {
               document.getElementById('myCanvas').style.backgroundColor = canvasColor;
+
               getfps = document.getElementById('inputfps').value
               fps=1000/getfps
               if (canvasColor.localeCompare('#ffffff') == 0) {
@@ -53,7 +54,10 @@
               ctx.fillStyle = "#000000";
               ctx.fillRect(0, 0, 1100, 260);
           }
+          var bg = document.getElementById('contentBG');
           
+
+
 
 
       </script>
@@ -64,17 +68,19 @@
       <ion-header-bar class="bar-stable">
         <h1 class="title">Ionic Blank Starter</h1>
       </ion-header-bar>
-      <ion-content>
+     <ion-content class="has-header" id="contentBG" ng-controller="AppCtrl">
            <center> 
-          <canvas id="myCanvas" style="background-color: #000; margin:20px; width: 1100px; height:260px;"></canvas><br />
+          <canvas id="myCanvas" style="background-color: #000;  width:100%; height:100% "></canvas><br />
          
               
                 please input fps
               <input id="inputfps" size="10" style="margin-left:10px; margin-right:10px"    />
-          <button onclick="blink();" style=" width: 50px;">Start</button>
+          <button onclick="blink();" ng-click="blink()" style=" width: 50px;">Start</button>
           <button onclick="stopblink();" style=" width: 50px;  margin-left:15px">Stop</button>
             </center>
+        
        </ion-content>
     </ion-pane>
+      <script src='lib/move.min.js'></script>
   </body>
 </html>
