@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+      <script>
+          var getfps = 0
+          var fps
+          var canvasColor = "#ffffff";
+          function blink() {
+              document.getElementById('myCanvas').style.backgroundColor = canvasColor;
+              getfps = document.getElementById('inputfps').value
+              fps=1000/getfps
+              if (canvasColor.localeCompare('#ffffff') == 0) {
+                  canvasColor = "#000000";
+              } else {
+                  canvasColor = "#ffffff";
+              }
+              return setTimeout(blink, fps);//33 is 30.30fps
+          }
+          function stopblink() {
+              window.location.reload();
+          }
+          function getlight() {
+             
+          }
+          function drawwhite() {
+              var c = document.getElementById("myCanvas");
+              var ctx = c.getContext("2d");
+              ctx.fillStyle = "#ffffff";
+              ctx.fillRect(0, 0, 1100, 260);
+          }
+          function drawblack() {
+              var c = document.getElementById("myCanvas");
+              var ctx = c.getContext("2d");
+              ctx.fillStyle = "#000000";
+              ctx.fillRect(0, 0, 1100, 260);
+          }
+          
+
+
+      </script>
+  </head>
+  <body ng-app="starter">
+
+    <ion-pane>
+      <ion-header-bar class="bar-stable">
+        <h1 class="title">Ionic Blank Starter</h1>
+      </ion-header-bar>
+      <ion-content>
+           <center> 
+          <canvas id="myCanvas" style="background-color: #000; margin:20px; width: 1100px; height:260px;"></canvas><br />
+         
+              
+                please input fps
+              <input id="inputfps" size="10" style="margin-left:10px; margin-right:10px"    />
+          <button onclick="blink();" style=" width: 50px;">Start</button>
+          <button onclick="stopblink();" style=" width: 50px;  margin-left:15px">Stop</button>
+            </center>
+       </ion-content>
+    </ion-pane>
+  </body>
+</html>
